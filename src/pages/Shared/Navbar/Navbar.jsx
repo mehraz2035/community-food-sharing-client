@@ -45,13 +45,18 @@ const Navbar = () => {
                     {navItems}
                 </ul>
             </div>
+
+
             <div className="navbar-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                    <div className="w-10 rounded-full">
-                        <img src={user?.photoURL}/>
+                    <div className="w-10 rounded-full ">
+                        <img src={user?.photoURL} />
                     </div>
                 </label>
+                <p className="text-[#2f3242] text-md font-semibold mx-2">{user.displayName}</p>
             </div>
+
+
         </div>
     );
 };
