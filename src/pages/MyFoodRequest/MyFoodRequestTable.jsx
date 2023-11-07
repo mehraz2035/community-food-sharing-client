@@ -1,8 +1,8 @@
-import { data } from "autoprefixer";
+/* eslint-disable react/prop-types */
 
 
 const MyFoodRequestTable = ({ myFoodRequestSingle, handleDelete }) => {
-    const { _id, foodDonatorName, pickupLocation, expiredDateTime, currentRequestDate, price, status } = myFoodRequestSingle;
+    const { _id, foodDonatorName, pickupLocation, expiredDateTime, currentRequestDate, donationMoney, status } = myFoodRequestSingle;
 
 
 
@@ -19,7 +19,7 @@ const MyFoodRequestTable = ({ myFoodRequestSingle, handleDelete }) => {
                 {expiredDateTime}
             </td>
             <td>{currentRequestDate}</td>
-            <td>{price}</td>
+            <td>{donationMoney}</td>
             <td>Status</td>
             <th className="text-center">
                 <button onClick={() => handleDelete(_id)} className="btn btn-square btn-sm btn-outline">

@@ -1,8 +1,10 @@
-import { data } from "autoprefixer";
+import { useContext } from "react";
+import { AuthContext } from "../../providers/AuthProvider";
 
 
 const AddFood = () => {
 
+    const { user } = useContext(AuthContext);
 
     const handleAddFood = event => {
         event.preventDefault();
@@ -13,8 +15,11 @@ const AddFood = () => {
         const foodQuantity = form.foodQuantity.value;
         const pickupLocation = form.pickupLocation.value;
         const expiredDateTime = form.expiredDateTime.value;
-        const notes = form.notes.value;
-        const addNew = { foodName, foodImage, foodQuantity, pickupLocation, expiredDateTime, notes }
+        const additionalNotes = form.additionalNotes.value;
+        const donatorImage = user?.photoURL;
+        const donatorName = user?.displayName;
+        const donatorEmail = user?.email;
+        const addNew = { foodName, foodImage, foodQuantity, pickupLocation, expiredDateTime, additionalNotes, donatorImage, donatorName, donatorEmail }
 
         console.log(addNew);
 
@@ -71,7 +76,7 @@ const AddFood = () => {
                     <label className="label">
                         <span className="label-text">Additional Notes</span>
                     </label>
-                    <input type="text" name="notes" placeholder="Additional Notes" className="input input-bordered" />
+                    <input type="text" name="additionalNotes" placeholder="Additional Notes" className="input input-bordered" />
                 </div>
 
                 <div className="form-control mt-6 grid grid-cols-1" >

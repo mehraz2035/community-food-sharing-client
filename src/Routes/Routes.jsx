@@ -8,6 +8,8 @@ import SingleFoodDetails from "../pages/SingleFoodDetails/SingleFoodDetails";
 import MyFoodRequest from "../pages/MyFoodRequest/MyFoodRequest";
 import PrivateRoute from "./PrivateRoute";
 import AddFood from "../pages/AddFood/AddFood";
+import ManageMyFoods from "../pages/manageMyFoods/manageMyFoods";
+
 
 
 const router = createBrowserRouter([
@@ -43,7 +45,12 @@ const router = createBrowserRouter([
         {
             path: "addFood",
             element: <AddFood></AddFood>
+        },
+        {
+            path: "manageMyFoods",
+            element: <ManageMyFoods></ManageMyFoods>
         }
+        
       ]
     },
   ]);

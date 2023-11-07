@@ -8,11 +8,12 @@ const SingleFoodDetails = () => {
     const availableFood = useLoaderData();
     const { _id,
         donatorName,
+        donatorEmail,
         pickupLocation,
         foodImage,
         foodName,
         foodQuantity,
-        expiredDateTime } = availableFood;
+        expiredDateTime} = availableFood;
 
 
     const { user } = useContext(AuthContext);
@@ -38,24 +39,23 @@ const SingleFoodDetails = () => {
         // const name = form.name.value;
         const email = user?.email;
         const userName = user?.displayName;
-        const userPhoto = user?.photoURL;
-        const notes = form.notes.value;
-        const price = form.price.value;
+        const additionalNotes = form.additionalNotes.value;
+        const donationMoney = form.donationMoney.value;
         const requestPerson = {
             foodName,
             foodImage,
             foodId: _id,
-            // foodDonatorEmail:
+            foodDonatorEmail: donatorEmail,
             foodDonatorName: donatorName,
             email,
             userName,
             currentRequestDate: formattedDate,
-            currentRequestTime: formattedTime,
+            // currentRequestTime: formattedTime,
             pickupLocation,
             expiredDateTime,
-            notes,
-            price,
-            userPhoto
+            additionalNotes,
+            donationMoney,
+            
             
         }
 
@@ -161,13 +161,13 @@ const SingleFoodDetails = () => {
                                         <label className="label">
                                             <span className="label-text">Additional Notes</span>
                                         </label>
-                                        <input type="text" name="notes" className="input input-bordered" required />
+                                        <input type="text" name="additionalNotes" className="input input-bordered" required />
                                     </div>
                                     <div className="form-control w-full">
                                         <label className="label">
                                             <span className="label-text">Donation Money</span>
                                         </label>
-                                        <input type="price" name="price" className="input input-bordered"/>
+                                        <input type="text" name="donationMoney" className="input input-bordered"/>
                                     </div>
                                     <div className="form-control mt-6 grid grid-cols-1" >
                                         <input className="btn btn-primary" type="submit" value="Request Button" />

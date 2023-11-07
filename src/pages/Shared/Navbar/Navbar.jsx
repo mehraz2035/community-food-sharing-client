@@ -18,7 +18,7 @@ const Navbar = () => {
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/availableFoods'>Available Foods</Link></li>
         <li><Link to='/addFood'>Add Food</Link></li>
-        <li><Link>Manage My Foods</Link></li>
+        <li><Link to='/manageMyFoods'>Manage My Foods</Link></li>
 
         {user?.email ? <>
             <li><Link to='/myFoodRequest'>My Food Request</Link></li>
@@ -41,7 +41,7 @@ const Navbar = () => {
                 <Link to='/' className="btn btn-ghost normal-case text-xl">Foods bank</Link>
             </div>
             <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
+                <ul className="menu menu-horizontal px-1 gap-2">
                     {navItems}
                 </ul>
             </div>
@@ -53,7 +53,7 @@ const Navbar = () => {
                         <img src={user?.photoURL} />
                     </div>
                 </label>
-                <p className="text-[#2f3242] text-md font-semibold mx-2">{user.displayName}</p>
+                <p className="text-[#2f3242] text-md font-semibold mx-2">{user?.displayName}</p>
             </div>
 
 
