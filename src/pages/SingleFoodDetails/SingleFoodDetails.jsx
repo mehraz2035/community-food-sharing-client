@@ -25,15 +25,20 @@ const SingleFoodDetails = () => {
 
       
         const currentDate = new Date();
-        const formattedDate = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')} ${currentDate.getHours().toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}:${currentDate.getSeconds().toString().padStart(2, '0')}`;
+        const hours = currentDate.getHours() % 12 || 12; // Get hours in 12-hour format
+        const amPm = currentDate.getHours() >= 12 ? 'PM' : 'AM'; // Determine AM or PM
+        const formattedTime = `${hours.toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}:${currentDate.getSeconds().toString().padStart(2, '0')} ${amPm}`;        
+        const formattedDate = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')} `
 
-        console.log(formattedDate)
+        console.log(formattedDate, formattedTime)
 
 
 
         const form = event.target;
         // const name = form.name.value;
         const email = user?.email;
+        const userName = user?.displayName;
+        const userPhoto = user?.photoURL;
         const notes = form.notes.value;
         const price = form.price.value;
         const requestPerson = {
@@ -42,12 +47,15 @@ const SingleFoodDetails = () => {
             foodId: _id,
             // foodDonatorEmail:
             foodDonatorName: donatorName,
-            requestingUserEmail: email,
+            email,
+            userName,
             currentRequestDate: formattedDate,
+            currentRequestTime: formattedTime,
             pickupLocation,
             expiredDateTime,
             notes,
-            price
+            price,
+            userPhoto
             
         }
 

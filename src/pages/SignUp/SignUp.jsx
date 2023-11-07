@@ -1,27 +1,58 @@
 import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { storage } from "../../firebase/firebase.config";
 
+function fileToUint8Array(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            const arrayBuffer = reader.result;
+            const uint8Array = new Uint8Array(arrayBuffer);
+            resolve(uint8Array);
+        };
+        reader.onerror = reject;
+        reader.readAsArrayBuffer(file);
+    });
+}
 
 
 const SignUp = () => {
-    const {createUser} = useContext(AuthContext);
+    const { createAccount, updateUserProfile } = useContext(AuthContext);
 
-    const handleSignUp = event =>{
-        event.preventDefault();
-        const form = event.target;
+
+    const handleSignUp = async (e) => {
+        e.preventDefault();
+        const form = e.target;
         const name = form.name.value;
+        const image = form.image.files[0];
+
         const email = form.email.value;
         const password = form.password.value;
-        console.log(name, email, password)
 
-        createUser(email, password)
-        .then(result => {
-            const user = result.user;
-            console.log(user)
-        })
-        .catch(error => console.log(error))
-    }
+        try {
+
+            const uint8Array = await fileToUint8Array(image);
+
+            createAccount(email, password)
+                .then((result) => {
+                    const storageRef = ref(storage, `user-images/${result.user.uid}/${image.name}`);
+                    uploadBytes(storageRef, uint8Array).then(() => {
+
+                        getDownloadURL(storageRef).then((downloadURL) => {
+
+                            updateUserProfile(name, downloadURL)
+                        });
+                    });
+                })
+                .catch((error) => {
+                    console.error(error);
+                });
+        } catch (error) {
+            console.error(error);
+        }
+    };
     return (
         <div className="hero min-h-screen bg-base-200">
             <div className="hero-content flex-col lg:flex-row  ">
@@ -36,6 +67,14 @@ const SignUp = () => {
                                 <span className="label-text">Name</span>
                             </label>
                             <input type="text" name="name" placeholder="name" className="input input-bordered" required />
+
+                        </div>
+                        <div className="form-control">
+                            <label className="label">
+                                <span className="label-text">Image</span>
+                            </label>
+
+                            <input type="file" name="image" className="file-input text-sm text-lowercase file-input-ghost w-full input-bordered" required />
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -58,6 +97,7 @@ const SignUp = () => {
                     </form>
                     <p className="text-center mb-6">Already Have an Account <Link className="text-orange-600" to="/login">Login</Link></p>
                 </div>
+
             </div>
         </div>
     );

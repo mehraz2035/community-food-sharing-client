@@ -10,17 +10,20 @@ const Navbar = () => {
 
     const handleLogOut = () => {
         logOut()
-            .then(() =>{})
+            .then(() => { })
             .catch(error => console.log(error))
     }
 
     const navItems = <>
         <li><Link to='/'>Home</Link></li>
         <li><Link to='/availableFoods'>Available Foods</Link></li>
-        <li><Link>Add Food</Link></li>
+        <li><Link to='/addFood'>Add Food</Link></li>
         <li><Link>Manage My Foods</Link></li>
-        <li><Link>My Food Request</Link></li>
-        {user?.email ? <li><button onClick={handleLogOut}>Log out</button></li> : <li><Link to='/login'>Login</Link></li>
+
+        {user?.email ? <>
+            <li><Link to='/myFoodRequest'>My Food Request</Link></li>
+            <li><button onClick={handleLogOut}>Log out</button></li>
+        </> : <li><Link to='/login'>Login</Link></li>
         }
     </>
 
@@ -45,7 +48,7 @@ const Navbar = () => {
             <div className="navbar-end">
                 <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                     <div className="w-10 rounded-full">
-                        <img src="https://i.ibb.co/tbtFk7T/martin-katler-Lz53-Hp-Zkt-Q-unsplash.jpg" />
+                        <img src={user?.photoURL}/>
                     </div>
                 </label>
             </div>
