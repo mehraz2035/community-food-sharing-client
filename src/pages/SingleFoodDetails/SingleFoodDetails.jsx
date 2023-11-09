@@ -62,7 +62,7 @@ const SingleFoodDetails = () => {
 
         console.log(requestPerson);
 
-        fetch('http://localhost:5000/requestPersons', {
+        fetch('https://community-food-sharing-server-ochre.vercel.app/requestPersons', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

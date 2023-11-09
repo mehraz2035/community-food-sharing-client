@@ -10,7 +10,7 @@ const MyFoodRequest = () => {
 
 
 
-    const url = `http://localhost:5000/requestPersons?email=${user?.email}`;
+    const url = `https://community-food-sharing-server-ochre.vercel.app/requestPersons?email=${user?.email}`;
     useEffect(() => {
         fetch(url)
             .then(res => res.json())
@@ -20,7 +20,7 @@ const MyFoodRequest = () => {
     const handleDelete = id => {
         const proceed = confirm('Are you sure?');
         if(proceed){
-            fetch(`http://localhost:5000/requestPersons/${id}`, {
+            fetch(`https://community-food-sharing-server-ochre.vercel.app/requestPersons/${id}`, {
                 method: 'DELETE'
             })
             .then(res => res.json())

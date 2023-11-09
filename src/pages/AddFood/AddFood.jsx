@@ -25,7 +25,7 @@ const AddFood = () => {
         console.log(addNew);
 
         // send data to the  server
-        fetch('http://localhost:5000/foodCart', {
+        fetch('https://community-food-sharing-server-ochre.vercel.app/foodCart', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -6,7 +6,7 @@ const FeaturedFoods = () => {
     const [featuredFoods, setFeaturedFoods] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/foodCart')
+        fetch('https://community-food-sharing-server-ochre.vercel.app/foodCart')
             .then(res => res.json())
             .then(data => setFeaturedFoods(data));
     }, []);
