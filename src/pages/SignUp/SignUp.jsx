@@ -19,7 +19,7 @@ function fileToUint8Array(file) {
 
 
 const SignUp = () => {
-    const { createAccount, updateUserProfile } = useContext(AuthContext);
+    const { createAccount, updateUserProfile, googleLogin } = useContext(AuthContext);
 
 
     const handleSignUp = async (e) => {
@@ -95,7 +95,10 @@ const SignUp = () => {
                             <input className="btn btn-primary" type="submit" value="Sign up" />
                         </div>
                     </form>
-                    <p className="text-center mb-6">Already Have an Account <Link className="text-orange-600" to="/login">Login</Link></p>
+                    <p className="text-center mb-6">Already Have an Account? <Link className="text-orange-600" to="/login">Login</Link></p>
+                    <div className="flex justify-center mb-7">
+                            <button onClick={googleLogin} className=" btn text-xl  flex items-center gap-2"><p>Google</p><img className="w-6 h-6  " src="https://i.ibb.co/tKWsFHK/Google-G-Logo-svg.webp" alt="" /></button>
+                        </div>
                 </div>
 
             </div>

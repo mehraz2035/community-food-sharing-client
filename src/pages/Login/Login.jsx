@@ -5,10 +5,10 @@ import { AuthContext } from "../../providers/AuthProvider";
 
 const Login = () => {
 
-    const { signIn } = useContext(AuthContext);
+    const { signIn, googleLogin } = useContext(AuthContext);
 
 
-    const handleLogin = event =>{
+    const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
         const email = form.email.value;
@@ -16,11 +16,11 @@ const Login = () => {
         console.log(email, password)
 
         signIn(email, password)
-        .then(result => {
-            const user = result.user;
-            console.log(user);
-        })
-        .catch(error => console.log(error));
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+            })
+            .catch(error => console.log(error));
     }
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -50,7 +50,10 @@ const Login = () => {
                             <input className="btn btn-primary" type="submit" value="Login" />
                         </div>
                     </form>
-                    <p className="text-center mb-6">New to Community Food Sharing <Link className="text-orange-600" to="/signup">Sign Up</Link></p>
+                    <p className="text-center mb-6">Dont have an account? <Link className="text-orange-600" to="/signup">Sign Up</Link></p>
+                    <div className="flex justify-center mb-7">
+                        <button onClick={googleLogin} className=" btn text-xl  flex items-center gap-2"><p>Google</p><img className="w-6 h-6  " src="https://i.ibb.co/tKWsFHK/Google-G-Logo-svg.webp" alt="" /></button>
+                    </div>
                 </div>
             </div>
         </div>

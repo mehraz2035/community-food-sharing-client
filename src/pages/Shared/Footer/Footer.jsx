@@ -2,24 +2,19 @@
 
 const Footer = () => {
     return (
-        <footer className="footer p-10 bg-base-200 text-base-content">
+        <footer className="footer p-10  bg-success-content text-white">
             <aside>
-                <h1>Foods bank</h1>
-                <p>ACME Industries Ltd.<br />Providing reliable tech since 1992</p>
+                <div className=" h-full w-1/4 mb-3 "><img src="https://nrai.org/wp-content/uploads/2019/02/FSSAI-Introduces-%E2%80%98Save-Food-Share-Food-Share-Joy%E2%80%99-Initiative-e1550043851366-660x400.jpg" alt="" /></div>
+                <p>Providing reliable tech since 1992</p>
             </aside>
-            <nav>
-                <header className="footer-title">Services</header>
-                <a className="link link-hover">Branding</a>
-                <a className="link link-hover">Design</a>
-                <a className="link link-hover">Marketing</a>
-                <a className="link link-hover">Advertisement</a>
-            </nav>
+            
             <nav>
                 <header className="footer-title">Company</header>
-                <a className="link link-hover">About us</a>
-                <a className="link link-hover">Contact</a>
-                <a className="link link-hover">Jobs</a>
-                <a className="link link-hover">Press kit</a>
+                <a className="link link-hover">Home</a>
+                <a className="link link-hover">Available Foods</a>
+                <a className="link link-hover">Add Food</a>
+                <a className="link link-hover">Manage My Food</a>
+                <a className="link link-hover">My Food Reqest</a>
             </nav>
             <nav>
                 <header className="footer-title">Legal</header>

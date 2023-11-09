@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const SingleFoodDetails = () => {
@@ -8,12 +9,12 @@ const SingleFoodDetails = () => {
     const availableFood = useLoaderData();
     const { _id,
         donatorName,
-        donatorEmail,
+        // email,
         pickupLocation,
         foodImage,
         foodName,
         foodQuantity,
-        expiredDateTime} = availableFood;
+        expiredDateTime } = availableFood;
 
 
     const { user } = useContext(AuthContext);
@@ -24,11 +25,11 @@ const SingleFoodDetails = () => {
 
 
 
-      
+
         const currentDate = new Date();
         const hours = currentDate.getHours() % 12 || 12; // Get hours in 12-hour format
         const amPm = currentDate.getHours() >= 12 ? 'PM' : 'AM'; // Determine AM or PM
-        const formattedTime = `${hours.toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}:${currentDate.getSeconds().toString().padStart(2, '0')} ${amPm}`;        
+        const formattedTime = `${hours.toString().padStart(2, '0')}:${currentDate.getMinutes().toString().padStart(2, '0')}:${currentDate.getSeconds().toString().padStart(2, '0')} ${amPm}`;
         const formattedDate = `${currentDate.getFullYear()}-${(currentDate.getMonth() + 1).toString().padStart(2, '0')}-${currentDate.getDate().toString().padStart(2, '0')} `
 
         console.log(formattedDate, formattedTime)
@@ -45,7 +46,7 @@ const SingleFoodDetails = () => {
             foodName,
             foodImage,
             foodId: _id,
-            foodDonatorEmail: donatorEmail,
+            foodDonatorEmail: email,
             foodDonatorName: donatorName,
             email,
             userName,
@@ -55,8 +56,8 @@ const SingleFoodDetails = () => {
             expiredDateTime,
             additionalNotes,
             donationMoney,
-            
-            
+
+
         }
 
         console.log(requestPerson);
@@ -72,7 +73,13 @@ const SingleFoodDetails = () => {
             .then(data => {
                 console.log(data);
                 if (data.insertedId) {
-                    alert('Request successfully')
+                    Swal.fire({
+                        position: "top-end",
+                        icon: "success",
+                        title: "Your request been send",
+                        showConfirmButton: false,
+                        timer: 1500
+                      })
                 }
             })
     }
@@ -92,10 +99,10 @@ const SingleFoodDetails = () => {
 
 
 
-                        
+
 
                         {/* You can open the modal using document.getElementById('ID').showModal() method */}
-                        <button className="btn" onClick={() => document.getElementById('my_modal_4').showModal()}>Request Button</button>
+                        <button className="btn btn-warning" onClick={() => document.getElementById('my_modal_4').showModal()}>Request Button</button>
                         <dialog id="my_modal_4" className="modal">
                             <div className="modal-box w-11/12 max-w-5xl">
 
@@ -167,10 +174,10 @@ const SingleFoodDetails = () => {
                                         <label className="label">
                                             <span className="label-text">Donation Money</span>
                                         </label>
-                                        <input type="text" name="donationMoney" className="input input-bordered"/>
+                                        <input type="text" name="donationMoney" className="input input-bordered" />
                                     </div>
                                     <div className="form-control mt-6 grid grid-cols-1" >
-                                        <input className="btn btn-primary" type="submit" value="Request Button" />
+                                        <input className="btn btn-warning" type="submit" value="Request Button" />
                                     </div>
                                 </form>
                                 {/* Request form  end*/}
@@ -187,7 +194,7 @@ const SingleFoodDetails = () => {
 
 
 
-                        
+
 
 
 

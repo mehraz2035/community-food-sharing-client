@@ -8,7 +8,8 @@ import SingleFoodDetails from "../pages/SingleFoodDetails/SingleFoodDetails";
 import MyFoodRequest from "../pages/MyFoodRequest/MyFoodRequest";
 import PrivateRoute from "./PrivateRoute";
 import AddFood from "../pages/AddFood/AddFood";
-import ManageMyFoods from "../pages/manageMyFoods/manageMyFoods";
+import UserBaseManagesFoods from "../pages/UserBaseManagesFoods/UserBaseManagesFoods";
+import FoodManages from "../pages/FoodManages/FoodManages";
 
 
 
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
         },
         {
             path: "singleFooddetails/:id",
-            element: <SingleFoodDetails></SingleFoodDetails>,
+            element: <PrivateRoute><SingleFoodDetails></SingleFoodDetails></PrivateRoute>,
             loader: ({params}) => fetch(`http://localhost:5000/foodCart/${params.id}`)
         },
         {
@@ -47,9 +48,15 @@ const router = createBrowserRouter([
             element: <AddFood></AddFood>
         },
         {
-            path: "manageMyFoods",
-            element: <ManageMyFoods></ManageMyFoods>
+            path: "userBaseManagesFoods",
+            element: <PrivateRoute><UserBaseManagesFoods></UserBaseManagesFoods></PrivateRoute>
+        },
+        {
+            path: "foodManages",
+            element: <FoodManages></FoodManages>
+           
         }
+
         
       ]
     },

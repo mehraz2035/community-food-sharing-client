@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 
 const AddFood = () => {
@@ -18,8 +19,8 @@ const AddFood = () => {
         const additionalNotes = form.additionalNotes.value;
         const donatorImage = user?.photoURL;
         const donatorName = user?.displayName;
-        const donatorEmail = user?.email;
-        const addNew = { foodName, foodImage, foodQuantity, pickupLocation, expiredDateTime, additionalNotes, donatorImage, donatorName, donatorEmail }
+        const email = user?.email;
+        const addNew = { foodName, foodImage, foodQuantity, pickupLocation, expiredDateTime, additionalNotes, donatorImage, donatorName, email }
 
         console.log(addNew);
 
@@ -34,6 +35,15 @@ const AddFood = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
+            if (data.insertedId) {
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Add Successfully',
+                    icon: 'success',
+                    confirmButtonText: 'OK'
+                })
+
+            }
         })
     }
 
@@ -80,7 +90,7 @@ const AddFood = () => {
                 </div>
 
                 <div className="form-control mt-6 grid grid-cols-1" >
-                    <input className="btn btn-primary" type="submit" value="Add Food" />
+                    <input className="btn btn-warning" type="submit" value="Add Food" />
                 </div>
             </form>
             {/* Request form  end*/}

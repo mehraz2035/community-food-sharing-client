@@ -1,5 +1,8 @@
 import Banner from "../Banner/Banner";
+import Details from "../Details/Details";
 import FeaturedFoods from "../FeaturedFoods/FeaturedFoods";
+import SwiperSlideAddHome from "../SwiperSlide/SwiperSlideAddHome";
+
 
 
 const Home = () => {
@@ -7,6 +10,8 @@ const Home = () => {
         <div>
             <Banner></Banner>
             <FeaturedFoods></FeaturedFoods>
+            <Details></Details>
+          <SwiperSlideAddHome></SwiperSlideAddHome>
         </div>
     );
 };

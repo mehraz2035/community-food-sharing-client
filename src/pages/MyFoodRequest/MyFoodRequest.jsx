@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import MyFoodRequestTable from "./MyFoodRequestTable";
+import Swal from "sweetalert2";
 
 
 const MyFoodRequest = () => {
@@ -26,7 +27,12 @@ const MyFoodRequest = () => {
             .then(data => {
                 console.log(data);
                 if(data.deletedCount > 0){
-                    alert('deleted ok')
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Delete Successfully',
+                        icon: 'success',
+                        confirmButtonText: 'OK'
+                    })
                     const remaining = myFoodRequest.filter(myFoodRequestSingle => myFoodRequestSingle._id !==id);
                     setMyFoodRequest(remaining);
                 }
