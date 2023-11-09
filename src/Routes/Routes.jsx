@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import AddFood from "../pages/AddFood/AddFood";
 import UserBaseManagesFoods from "../pages/UserBaseManagesFoods/UserBaseManagesFoods";
 import FoodManages from "../pages/FoodManages/FoodManages";
+import PageError from "../PageError/PageError";
 
 
 
@@ -17,6 +18,7 @@ const router = createBrowserRouter([
     {
       path: "/",
       element: <MainLayout></MainLayout>,
+      errorElement: <PageError></PageError>,
       children: [
         {
             path: "/",
@@ -45,7 +47,7 @@ const router = createBrowserRouter([
         },
         {
             path: "addFood",
-            element: <AddFood></AddFood>
+            element: <PrivateRoute><AddFood></AddFood></PrivateRoute>
         },
         {
             path: "userBaseManagesFoods",
