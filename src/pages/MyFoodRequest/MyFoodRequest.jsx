@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../providers/AuthProvider";
 import MyFoodRequestTable from "./MyFoodRequestTable";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 
 const MyFoodRequest = () => {
@@ -18,31 +19,49 @@ const MyFoodRequest = () => {
     }, [url]);
 
     const handleDelete = id => {
-        const proceed = confirm('Are you sure?');
-        if(proceed){
-            fetch(`https://community-food-sharing-server-ochre.vercel.app/requestPersons/${id}`, {
-                method: 'DELETE'
-            })
-            .then(res => res.json())
-            .then(data => {
-                console.log(data);
-                if(data.deletedCount > 0){
+        Swal.fire({
+            title: 'Are you sure?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Delete',
+            cancelButtonText: 'Cancel'
+        }).then(result => {
+            if (result.isConfirmed) {
+                fetch(`https://community-food-sharing-server-ochre.vercel.app/requestPersons/${id}`, {
+                    method: 'DELETE'
+                })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    if (data.deletedCount > 0) {
+                        Swal.fire({
+                            title: 'Deleted successfully',
+                            icon: 'success',
+                            confirmButtonText: 'OK'
+                        });
+                        const remaining = myFoodRequest.filter(myFoodRequestSingle => myFoodRequestSingle._id !== id);
+                        setMyFoodRequest(remaining);
+                    }
+                })
+                .catch(error => {
+                    console.error('Error deleting data:', error);
                     Swal.fire({
-                        title: 'Success!',
-                        text: 'Delete Successfully',
-                        icon: 'success',
+                        title: 'Error!',
+                        text: 'An error occurred while deleting the record.',
+                        icon: 'error',
                         confirmButtonText: 'OK'
-                    })
-                    const remaining = myFoodRequest.filter(myFoodRequestSingle => myFoodRequestSingle._id !==id);
-                    setMyFoodRequest(remaining);
-                }
-            })
-        }
+                    });
+                });
+            }
+        });
     }
 
     return (
         <div>
-            <h1>My Food Request: {myFoodRequest.length}</h1>
+            <Helmet>
+                <title>Share Food | My Food Request</title>
+            </Helmet>
+
 
 
             <div className="overflow-x-auto border-2 my-20">

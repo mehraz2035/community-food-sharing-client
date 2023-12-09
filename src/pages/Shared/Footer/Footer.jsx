@@ -5,7 +5,7 @@ const Footer = () => {
         <footer className="footer p-10  bg-success-content text-white">
             <aside>
                 <div className=" h-full w-1/4 mb-3 "><img src="https://nrai.org/wp-content/uploads/2019/02/FSSAI-Introduces-%E2%80%98Save-Food-Share-Food-Share-Joy%E2%80%99-Initiative-e1550043851366-660x400.jpg" alt="" /></div>
-                <p>Providing reliable tech since 1992</p>
+                <p >Providing reliable tech since 1992</p>
             </aside>
             
             <nav>

@@ -1,11 +1,17 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
+import Swal from "sweetalert2";
+
 
 
 const Login = () => {
 
     const { signIn, googleLogin } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const from = location.state?.form?.pathname || "/";
 
 
     const handleLogin = event => {
@@ -19,11 +25,22 @@ const Login = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "Login Successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                  });
+                navigate(from, {replace: true });
             })
             .catch(error => console.log(error));
     }
     return (
+
+        
         <div className="hero min-h-screen bg-base-200">
+           
             <div className="hero-content flex-col lg:flex-row  ">
                 <div className="text-center lg:text-left w-1/2  lg:mr-32 ">
                     <img src="https://cdni.iconscout.com/illustration/premium/thumb/online-registration-4487137-3726287.png" alt="" />

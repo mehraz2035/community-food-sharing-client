@@ -27,7 +27,6 @@ const SignUp = () => {
         const form = e.target;
         const name = form.name.value;
         const image = form.image.files[0];
-
         const email = form.email.value;
         const password = form.password.value;
 

@@ -1,17 +1,11 @@
-
-
-
 const FoodManages = () => {
 
+return (
+      <div>
+          <h1>FoodManages</h1>
 
-
-
-    return (
-        <div>
-            <h1>FoodManages</h1>
-
-        </div>
-    );
+      </div>
+  );
 };
 
 export default FoodManages;

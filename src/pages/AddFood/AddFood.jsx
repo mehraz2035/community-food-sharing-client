@@ -49,7 +49,7 @@ const AddFood = () => {
 
     return (
         <div>
-            <h1>Add Food</h1>
+       
 
             <form onSubmit={handleAddFood} className="card-body mb-10 ">
                 <div className="form-control">

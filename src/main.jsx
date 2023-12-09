@@ -6,7 +6,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import router from './Routes/Routes.jsx';
-import AuthProvider from './providers/AuthProvider';
+import AuthProvider from './providers/AuthProvider'; 'react-helmet-async';
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <div className='max-w-[1400px] mx-auto'>

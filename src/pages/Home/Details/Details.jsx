@@ -17,7 +17,7 @@ const Details = () => {
 
                     <div className="card  text-primary-content  rounded-none bg-base-200 h-fit ">
                         <div className="card-body text-black">
-                            <h2 className="card-title my-3">Motor car</h2>
+                            <h2 className="card-title my-3">Food share</h2>
                             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum deserunt quos vero, debitis beatae fuga, amet odit culpa adipisci neque mollitia fugiat in sunt. Ipsum quo laudantium perspiciatis aspernatur commodi.</p>
 
                         </div>
@@ -29,17 +29,17 @@ const Details = () => {
                                 FAQs
                             </div>
                             <div className="faqs p-4">
-                                <details className="bg-[#f6f6f6] rounded p-2 my-4 cursor-pointer w-fit">
-                                    <summary className="outline-none"> Typically have four doors and a separate trunk for luggage?</summary>
-                                    <p className="text-sm"> Typically have four doors and a separate trunk for luggage.</p>
+                                <details className="bg-[#f6f6f6] rounded p-2 my-4 cursor-pointer w-full">
+                                    <summary className="outline-none"> How can I maintain a healthy diet?</summary>
+                                    <p className="text-sm">Maintaining a healthy diet involves eating a variety of nutrient-rich foods.</p>
                                 </details>
                                 <details className="bg-[#f6f6f6] rounded p-2 my-4 cursor-pointer">
-                                    <summary className="outline-none"> Typically have four doors and a separate trunk for luggage?</summary>
-                                    <p className="text-sm"> Typically have four doors and a separate trunk for luggage.</p>
+                                    <summary className="outline-none">What are some healthy snack options?</summary>
+                                    <p className="text-sm">No</p>
                                 </details>
                                 <details className="bg-[#f6f6f6] rounded p-2 my-4 cursor-pointer">
-                                    <summary className="outline-none"> Typically have four doors and a separate trunk for luggage?</summary>
-                                    <p className="text-sm"> Typically have four doors and a separate trunk for luggage.</p>
+                                    <summary className="outline-none">How can I make mindful eating choices?</summary>
+                                    <p className="text-sm">Mindful eating involves paying attention to the taste.</p>
                                 </details>
                             </div>
                         </div>

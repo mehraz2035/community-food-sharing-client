@@ -14,6 +14,7 @@ const SingleFoodDetails = () => {
         foodImage,
         foodName,
         foodQuantity,
+        status,
         expiredDateTime } = availableFood;
 
 
@@ -40,6 +41,7 @@ const SingleFoodDetails = () => {
         // const name = form.name.value;
         const email = user?.email;
         const userName = user?.displayName;
+        const requesterImage = user?.photoURL;
         const additionalNotes = form.additionalNotes.value;
         const donationMoney = form.donationMoney.value;
         const requestPerson = {
@@ -48,10 +50,12 @@ const SingleFoodDetails = () => {
             foodId: _id,
             foodDonatorEmail: email,
             foodDonatorName: donatorName,
+            status,
             email,
             userName,
+            requesterImage,
             currentRequestDate: formattedDate,
-            // currentRequestTime: formattedTime,
+            currentRequestTime: formattedTime,
             pickupLocation,
             expiredDateTime,
             additionalNotes,
@@ -86,15 +90,17 @@ const SingleFoodDetails = () => {
 
     return (
         <div>
+           
 
             <div className="card lg:card-side bg-base-100 shadow-xl my-20 border-2">
                 <figure className="lg:w-9/12"><img src={foodImage} alt="Album" /></figure>
                 <div className="card-body">
                     <h2 className="card-title">{donatorName}</h2>
+                    <h2 className="card-title">{status}</h2>
                     <h2 className="card-title">{pickupLocation}</h2>
                     <h2 className="card-title">{foodName}</h2>
-                    <h2 className="card-title">{foodQuantity}</h2>
-                    <p>{expiredDateTime}</p>
+                    <h2 className="card-title">Quantity: {foodQuantity}</h2>
+                    <p>Expired Date: {expiredDateTime}</p>
                     <div className="card-actions justify-end">
 
 
@@ -102,7 +108,7 @@ const SingleFoodDetails = () => {
 
 
                         {/* You can open the modal using document.getElementById('ID').showModal() method */}
-                        <button className="btn btn-warning" onClick={() => document.getElementById('my_modal_4').showModal()}>Request Button</button>
+                        <button className="btn btn-warning w-full" onClick={() => document.getElementById('my_modal_4').showModal()}>Request Button</button>
                         <dialog id="my_modal_4" className="modal">
                             <div className="modal-box w-11/12 max-w-5xl">
 
