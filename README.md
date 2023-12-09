@@ -68,12 +68,7 @@ Our project is a Community Food Sharing and Surplus Reduction Platform aimed at 
 - MongoDB
 - Tailwind CSS
 - React-Table
-- (Optional) Explore new packages:
-  - react-elastic-carousel
-  - Lottie-react
-  - Framer-motion
-  - React Hook Form
-  - React Helmet
+- React Helmet
 
 ## License
 
